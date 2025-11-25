@@ -1,0 +1,16 @@
+langchain
+python-dotenv
+langchain_community
+pypdf
+pymupdf
+wikipedia
+langchain_text_splitters
+langchain-openai
+sentence_transformers
+langchain_huggingface
+langchain_huggingface
+faiss-cpu
+langchain_chroma
+langchain_core
+langchain_groq
+streamlit
