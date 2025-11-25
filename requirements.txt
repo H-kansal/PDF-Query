@@ -1,6 +1,7 @@
-langchain
+langchain==0.1.20
+langchain-community==0.0.30
+langchain-core==0.1.40
 python-dotenv
-langchain_community
 pypdf
 pymupdf
 wikipedia
@@ -11,6 +12,5 @@ langchain_huggingface
 langchain_huggingface
 faiss-cpu
 langchain_chroma
-langchain_core
 langchain_groq
 streamlit
