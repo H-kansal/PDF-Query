@@ -1,7 +1,7 @@
 import streamlit as st
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.vectorstores import FAISS
+from langchain_community.vectorstores import Chroma
 from langchain_groq import ChatGroq
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.chains import create_retrieval_chain,create_history_aware_retriever
@@ -15,7 +15,7 @@ import os
 
 load_dotenv()
 
-os.environ['HF_TOKEN']=os.getenv("HF_TOKEN")
+os.environ['HF_TOKEN']=st.secrets["HF_TOKEN"]
 st.title("PDF Q&A ChatBot with Groq and Ollama")
 st.write("Upload Pdf's and chat with their content")
 
@@ -31,7 +31,7 @@ if api_key:
     if uploaded_files:
         document=[]
         for uploaded_file in uploaded_files:
-            fileName=f"./{uploaded_file.name}"
+            fileName = f"/tmp/{uploaded_file.name}"
             with open(fileName,"wb") as file:
                 file.write(uploaded_file.getvalue())
             
@@ -42,7 +42,7 @@ if api_key:
         text_splitter=RecursiveCharacterTextSplitter(chunk_size=1000,chunk_overlap=100)
         final_docs=text_splitter.split_documents(document)
         embedding=HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-        vectordb=FAISS.from_documents(final_docs,embedding)
+        vectordb=Chroma.from_documents(final_docs,embedding)
         retriever=vectordb.as_retriever()
     
         model_prompt=ChatPromptTemplate.from_messages(
