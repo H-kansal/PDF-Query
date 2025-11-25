@@ -2,7 +2,7 @@ streamlit==1.32.2
 python-dotenv
 langchain==0.1.19
 langchain-community==0.0.19
-langchain-core==0.1.42
+langchain-core==0.1.52
 pypdf
 pymupdf
 wikipedia
