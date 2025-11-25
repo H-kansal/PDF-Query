@@ -1,6 +1,6 @@
-langchain==0.1.20
-langchain-community==0.0.30
-langchain-core==0.1.40
+langchain==0.1.19
+langchain-community==0.0.19
+langchain-core==0.1.42
 python-dotenv
 pypdf
 pymupdf
